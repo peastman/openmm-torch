@@ -94,8 +94,10 @@ INSTALL (FILES ${API_ONLY_INCLUDE_FILES_INTERNAL} DESTINATION include/internal)
 
 # Enable testing
 
-ENABLE_TESTING()
-ADD_SUBDIRECTORY(serialization/tests)
+INCLUDE(CTest)
+IF(BUILD_TESTING)
+    ADD_SUBDIRECTORY(serialization/tests)
+ENDIF()
 
 # Copy test files to the build directory.
 
