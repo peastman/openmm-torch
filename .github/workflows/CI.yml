@@ -135,6 +135,7 @@ jobs:
           if [[ ${{ matrix.os }} == macos-* ]]; then
             SHLIB_EXT=".dylib"
           fi
+          export PYTORCH_ROCM_ARCH=gfx1201
 
           cmake .. \
             -DCMAKE_BUILD_TYPE=Release \
