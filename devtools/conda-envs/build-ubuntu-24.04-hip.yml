@@ -5,7 +5,6 @@ dependencies:
   - cmake
   - gxx_linux-64 @GCC_VERSION@
   - make
-  - openmm >=8.5
   - pip
   - pytest
   - python
@@ -14,4 +13,5 @@ dependencies:
   - libxcrypt
   - pip:
     - --index-url https://download.pytorch.org/whl/rocm7.2
+    - openmm[hip7] >=8.5
     - torch
