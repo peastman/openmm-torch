@@ -12,6 +12,6 @@ dependencies:
   - sysroot_linux-64 2.17
   - libxcrypt
   - pip:
-    - --index-url https://download.pytorch.org/whl/rocm7.2
+    - --extra-index-url https://download.pytorch.org/whl/rocm7.2
     - openmm[hip7] >=8.5
     - torch
