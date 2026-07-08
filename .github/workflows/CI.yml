@@ -139,6 +139,10 @@ jobs:
             export PYTORCH_ROCM_ARCH=gfx1201
             export CXX=hipcc
           fi
+          echo ${SITE_PACKAGES}
+          ls ${SITE_PACKAGES}
+          echo ${SITE_PACKAGES}/torch/share/cmake/Torch
+          ls ${SITE_PACKAGES}/torch/share/cmake/Torch
 
           cmake .. \
             -DCMAKE_BUILD_TYPE=Release \
