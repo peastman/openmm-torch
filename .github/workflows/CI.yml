@@ -41,6 +41,7 @@ jobs:
             nvcc-version: ""
             python-version: "3.14"
             pytorch-version: "2.12.*"
+            opencl: false
 
           - name: MacOS ARM (Python 3.11, PyTorch 2.4)
             os: macos-latest
@@ -51,17 +52,6 @@ jobs:
             nvcc-version: ""
             python-version: "3.11"
             pytorch-version: "2.4.*"
-            opencl: false
-
-          - name: MacOS Intel (Python 3.13, PyTorch 2.5)
-            os: macos-15-intel
-            env: macos-15-intel
-            cuda-version: ""
-            hip-version: ""
-            gcc-version: ""
-            nvcc-version: ""
-            python-version: "3.13"
-            pytorch-version: "2.5.*"
             opencl: false
 
 
@@ -130,7 +120,6 @@ jobs:
         run: |
           mkdir build
           cd build
-
           SHLIB_EXT=".so"
           if [[ ${{ matrix.os }} == macos-* ]]; then
             SHLIB_EXT=".dylib"
@@ -140,11 +129,6 @@ jobs:
             export CXX=hipcc
           fi
           export SITE_PACKAGES=$(python -c 'import site; print(site.getsitepackages()[0])')
-          echo ${SITE_PACKAGES}
-          ls ${SITE_PACKAGES}
-          echo ${SITE_PACKAGES}/torch/share/cmake/Torch
-          ls ${SITE_PACKAGES}/torch/share/cmake/Torch
-
           cmake .. \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_INSTALL_PREFIX=${SITE_PACKAGES}/OpenMM.libs \
