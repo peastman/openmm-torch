@@ -3,17 +3,17 @@ channels:
   - conda-forge
 dependencies:
   - cmake
-  - cuda-version @CUDATOOLKIT_VERSION@
   - gxx_linux-64 @GCC_VERSION@
   - make
   - nnpops
   - ocl-icd
-  - openmm >=8.1
   - pip
   - pytest
   - python
-  - pytorch-gpu @PYTORCH_VERSION@
   - swig
   - sysroot_linux-64 2.17
   - torchani
   - libxcrypt
+- pip:
+  - openmm[cuda13] >= 8.5
+  - torch == @PYTORCH_VERSION@

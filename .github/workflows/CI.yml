@@ -142,9 +142,9 @@ jobs:
 
           cmake .. \
             -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_INSTALL_PREFIX=${CONDA_PREFIX} \
-            -DOPENMM_DIR=${CONDA_PREFIX} \
-            -DTorch_DIR=${CONDA_PREFIX}/lib/python${{ matrix.python-version }}/site-packages/torch/share/cmake/Torch \
+            -DCMAKE_INSTALL_PREFIX=${SITE_PACKAGES}/OpenMM.libs \
+            -DOPENMM_DIR=${SITE_PACKAGES}/OpenMM.libs \
+            -DTorch_DIR=${SITE_PACKAGES}/torch/share/cmake/Torch \
             -DNN_BUILD_OPENCL_LIB=ON \
             -DCUDAToolkit_ROOT="${{steps.cuda-toolkit.outputs.CUDA_PATH}}" \
             -DCMAKE_CUDA_COMPILER="${{steps.cuda-toolkit.outputs.CUDA_PATH}}/bin/nvcc"

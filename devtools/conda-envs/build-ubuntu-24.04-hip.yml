@@ -14,4 +14,4 @@ dependencies:
   - pip:
     - --extra-index-url https://download.pytorch.org/whl/rocm7.2
     - openmm[hip7] >=8.5
-    - torch
+    - torch == @PYTORCH_VERSION@
