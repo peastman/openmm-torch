@@ -9,6 +9,6 @@ dependencies:
   - pytest
   - python
   - swig
-- pip:
-  - openmm >= 8.5
-  - torch == @PYTORCH_VERSION@
+  - pip:
+    - openmm >= 8.5
+    - torch == @PYTORCH_VERSION@

@@ -14,6 +14,6 @@ dependencies:
   - sysroot_linux-64 2.17
   - torchani
   - libxcrypt
-- pip:
-  - openmm[cuda13] >= 8.5
-  - torch == @PYTORCH_VERSION@
+  - pip:
+    - openmm[cuda13] >= 8.5
+    - torch == @PYTORCH_VERSION@
