@@ -148,13 +148,15 @@ jobs:
       - name: "List plugins"
         shell: bash -l {0}
         run: |
-          export LD_LIBRARY_PATH="${CONDA_PREFIX}/lib/python${{ matrix.python-version }}/site-packages/torch/lib:${LD_LIBRARY_PATH}"
+          export SITE_PACKAGES=$(python -c 'import site; print(site.getsitepackages()[0])')
+          export LD_LIBRARY_PATH="${SITE_PACKAGES}/torch/lib:${SITE_PACKAGES}/OpenMM.libs/lib:${LD_LIBRARY_PATH}"
           python -c "import openmm as mm; print('---Loaded---', *mm.pluginLoadedLibNames, '---Failed---', *mm.Platform.getPluginLoadFailures(), sep='\n')"
 
       - name: "Run C++ test"
         shell: bash -l {0}
         run: |
-          export LD_LIBRARY_PATH="${CONDA_PREFIX}/lib/python${{ matrix.python-version }}/site-packages/torch/lib:${LD_LIBRARY_PATH}"
+          export SITE_PACKAGES=$(python -c 'import site; print(site.getsitepackages()[0])')
+          export LD_LIBRARY_PATH="${SITE_PACKAGES}/torch/lib:${SITE_PACKAGES}/OpenMM.libs/lib:${LD_LIBRARY_PATH}"
           cd build
           if [[ ${{ matrix.opencl }} == true ]]; then
             source /opt/intel/oneapi/setvars.sh
@@ -164,7 +166,8 @@ jobs:
       - name: "Run Python test"
         shell: bash -l {0}
         run: |
-          export LD_LIBRARY_PATH="${CONDA_PREFIX}/lib/python${{ matrix.python-version }}/site-packages/torch/lib:${LD_LIBRARY_PATH}"
+          export SITE_PACKAGES=$(python -c 'import site; print(site.getsitepackages()[0])')
+          export LD_LIBRARY_PATH="${SITE_PACKAGES}/torch/lib:${SITE_PACKAGES}/OpenMM.libs/lib:${LD_LIBRARY_PATH}"
           cd python/tests
           if [[ ${{ matrix.opencl }} == true ]]; then
             source /opt/intel/oneapi/setvars.sh
