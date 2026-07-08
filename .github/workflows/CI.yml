@@ -139,6 +139,7 @@ jobs:
             export PYTORCH_ROCM_ARCH=gfx1201
             export CXX=hipcc
           fi
+          export SITE_PACKAGES=$(python -c 'import site; print(site.getsitepackages()[0])')
           echo ${SITE_PACKAGES}
           ls ${SITE_PACKAGES}
           echo ${SITE_PACKAGES}/torch/share/cmake/Torch
